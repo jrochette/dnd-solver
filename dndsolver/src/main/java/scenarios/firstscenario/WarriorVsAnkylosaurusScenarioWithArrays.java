@@ -41,14 +41,9 @@ public class WarriorVsAnkylosaurusScenarioWithArrays {
   private IntegerVariable[] ankylosaurusDamageReceived = new IntegerVariable[NB_OF_ROUNDS];
   private IntegerVariable warriorHp;
   private IntegerVariable ankylosaurusHp;
-  private IntegerVariable endOfFight;
 
   public WarriorVsAnkylosaurusScenarioWithArrays() {
     model = new CPModel();
-
-    // Variable contenant l'indice de la round à laquelle le combat se termine
-    endOfFight = makeIntVar("end of fight", 0, 9);
-    model.addVariable(endOfFight);
 
     // Tableau de variable représentant les dommages reçus par le guerrier
     for (int i = 0; i < NB_OF_ROUNDS; i++) {

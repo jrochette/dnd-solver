@@ -11,7 +11,23 @@ import choco.kernel.model.variables.integer.IntegerVariable;
 import choco.kernel.solver.Solver;
 import choco.kernel.solver.variables.integer.IntDomainVar;
 
-public class WarriorVsAnkylosaurSecondTry {
+/*
+ * Ce scénario représente un combat entre un guerrier (niveau 10)
+ * et un ennemi (ankylosaure) tiré du bestiaire du jeu de rôle
+ * pathfinder (un version de donjons et dragons)
+ * 
+ * Le guerrier à 89 points de vie et fait 46 dmg par attaque
+ * 
+ * L'ankylosaure à 75 points de vie et fait 25 dmg par attaque
+ * 
+ * Dans le cadre de ce scénario, c'est le guerrier qui agira
+ * en premier
+ * 
+ * Pour garder ce scénario très simple, il n'y aura pas de mouvement
+ * de la part du guerrier ni de l'ankylosaure.
+ *
+ */
+public class WarriorVsAnkylosaurScenarioWithoutArray {
   private static final int NB_OF_ROUNDS = 3;
   private static final int[] WARRIOR_DMG = { 0, 46 };
   private static final int[] ANKYLOSAURUS_DMG = { 0, 25 };
@@ -33,7 +49,7 @@ public class WarriorVsAnkylosaurSecondTry {
   private Model model;
   private Solver solveur;
 
-  public WarriorVsAnkylosaurSecondTry() {
+  public WarriorVsAnkylosaurScenarioWithoutArray() {
     // Création du model et du solveur
     model = new CPModel();
 
@@ -82,8 +98,6 @@ public class WarriorVsAnkylosaurSecondTry {
                                    ifThenElse(gtAnkylosaurus2,
                                               eq(ankylosaurusDmg3, 0),
                                               eq(ankylosaurusDmg3, 46))));
-
-    // eq(warriorDmg2, 25)));
 
     // Variable représentant la vie du guerrier
     warriorHp = makeIntVar("warrior HP", -50, WARRIOR_MAX_HP);

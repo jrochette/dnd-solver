@@ -169,34 +169,43 @@ public class WarriorVsTwoHobgoblins {
   private IntegerVariable[] prepareHeuristic() {
     IntegerVariable[] instantiationOrder = new IntegerVariable[30];
     instantiationOrder[0] = hobgoblin1DamageReceived[0];
-    instantiationOrder[1] = hobgoblin1DamageReceived[0];
+    instantiationOrder[1] = hobgoblin2DamageReceived[0];
     instantiationOrder[2] = warriorDamageReceived[0];
+    
     instantiationOrder[3] = hobgoblin1DamageReceived[1];
-    instantiationOrder[4] = hobgoblin1DamageReceived[1];
+    instantiationOrder[4] = hobgoblin2DamageReceived[1];
     instantiationOrder[5] = warriorDamageReceived[1];
+    
     instantiationOrder[6] = hobgoblin1DamageReceived[2];
-    instantiationOrder[7] = hobgoblin1DamageReceived[2];
+    instantiationOrder[7] = hobgoblin2DamageReceived[2];
     instantiationOrder[8] = warriorDamageReceived[2];
+    
     instantiationOrder[9] = hobgoblin1DamageReceived[3];
-    instantiationOrder[10] = hobgoblin1DamageReceived[3];
+    instantiationOrder[10] = hobgoblin2DamageReceived[3];
     instantiationOrder[11] = warriorDamageReceived[3];
+    
     instantiationOrder[12] = hobgoblin1DamageReceived[4];
-    instantiationOrder[13] = hobgoblin1DamageReceived[4];
+    instantiationOrder[13] = hobgoblin2DamageReceived[4];
     instantiationOrder[14] = warriorDamageReceived[4];
+    
     instantiationOrder[15] = hobgoblin1DamageReceived[5];
-    instantiationOrder[16] = hobgoblin1DamageReceived[5];
+    instantiationOrder[16] = hobgoblin2DamageReceived[5];
     instantiationOrder[17] = warriorDamageReceived[5];
+    
     instantiationOrder[18] = hobgoblin1DamageReceived[6];
-    instantiationOrder[19] = hobgoblin1DamageReceived[6];
+    instantiationOrder[19] = hobgoblin2DamageReceived[6];
     instantiationOrder[20] = warriorDamageReceived[6];
+    
     instantiationOrder[21] = hobgoblin1DamageReceived[7];
-    instantiationOrder[22] = hobgoblin1DamageReceived[7];
+    instantiationOrder[22] = hobgoblin2DamageReceived[7];
     instantiationOrder[23] = warriorDamageReceived[7];
+    
     instantiationOrder[24] = hobgoblin1DamageReceived[8];
-    instantiationOrder[25] = hobgoblin1DamageReceived[8];
+    instantiationOrder[25] = hobgoblin2DamageReceived[8];
     instantiationOrder[26] = warriorDamageReceived[8];
+    
     instantiationOrder[27] = hobgoblin1DamageReceived[9];
-    instantiationOrder[28] = hobgoblin1DamageReceived[9];
+    instantiationOrder[28] = hobgoblin2DamageReceived[9];
     instantiationOrder[29] = warriorDamageReceived[9];
     return instantiationOrder;
 

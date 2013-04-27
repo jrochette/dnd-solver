@@ -73,19 +73,11 @@ public class WarriorVsTwoHobgoblins {
     for (int i = 0; i < NB_OF_ROUNDS; i++) {
       IntegerVariable[] tempWarriorArrays = Arrays.copyOf(warriorDamageReceived, i);
       IntegerVariable[] tempHobgoblin1Arrays = Arrays.copyOf(hobgoblin1DamageReceived, i);
-      IntegerVariable[] tempHobgolbin1ArraysNextRound = Arrays.copyOf(hobgoblin1DamageReceived,
-                                                                      i + 1);
       IntegerVariable[] tempHobgoblin2Arrays = Arrays.copyOf(hobgoblin2DamageReceived, i);
-      IntegerVariable[] tempHobgolbin2ArraysNextRound = Arrays.copyOf(hobgoblin2DamageReceived,
-                                                                      i + 1);
 
       Constraint isWarriorDead = gt(sum(tempWarriorArrays), WARRIOR_MAX_HP);
       Constraint isHobgoblin1Dead = gt(sum(tempHobgoblin1Arrays), HOBGOBLIN_MAX_HP);
       Constraint isHobgoblin2Dead = gt(sum(tempHobgoblin2Arrays), HOBGOBLIN_MAX_HP);
-      Constraint isHobgoblin1DeadNextRound = gt(sum(tempHobgolbin1ArraysNextRound),
-                                                HOBGOBLIN_MAX_HP);
-      Constraint isHobgoblin2DeadNextRound = gt(sum(tempHobgolbin2ArraysNextRound),
-                                                HOBGOBLIN_MAX_HP);
 
       // dommage reçu par l'hobgoblin 1
       model.addConstraint(ifThenElse(isWarriorDead,
@@ -119,17 +111,17 @@ public class WarriorVsTwoHobgoblins {
     }
 
     // Variable représentant la vie du guerrier
-    warriorHp = makeIntVar("warrior HP", -5000, WARRIOR_MAX_HP, Options.V_OBJECTIVE);
+    warriorHp = makeIntVar("warrior HP", -19, WARRIOR_MAX_HP, Options.V_OBJECTIVE);
     model.addVariable(warriorHp);
     model.addConstraint(eq(warriorHp, minus(WARRIOR_MAX_HP, sum(warriorDamageReceived))));
 
     // Variable représentant la vie de l'hobgoblin
-    hobgoblin1Hp = makeIntVar("hobgoblin 1 HP", -6300, HOBGOBLIN_MAX_HP);
+    hobgoblin1Hp = makeIntVar("hobgoblin 1 HP", -44, HOBGOBLIN_MAX_HP);
     model.addVariable(hobgoblin1Hp);
     model.addConstraint(eq(hobgoblin1Hp, minus(HOBGOBLIN_MAX_HP, sum(hobgoblin1DamageReceived))));
 
     // Variable représentant la vie de l'hobgoblin
-    hobgoblin2Hp = makeIntVar("hobgoblin 2 HP", -6300, HOBGOBLIN_MAX_HP);
+    hobgoblin2Hp = makeIntVar("hobgoblin 2 HP", -44, HOBGOBLIN_MAX_HP);
     model.addVariable(hobgoblin2Hp);
     model.addConstraint(eq(hobgoblin2Hp, minus(HOBGOBLIN_MAX_HP, sum(hobgoblin2DamageReceived))));
   }
@@ -171,39 +163,39 @@ public class WarriorVsTwoHobgoblins {
     instantiationOrder[0] = hobgoblin1DamageReceived[0];
     instantiationOrder[1] = hobgoblin2DamageReceived[0];
     instantiationOrder[2] = warriorDamageReceived[0];
-    
+
     instantiationOrder[3] = hobgoblin1DamageReceived[1];
     instantiationOrder[4] = hobgoblin2DamageReceived[1];
     instantiationOrder[5] = warriorDamageReceived[1];
-    
+
     instantiationOrder[6] = hobgoblin1DamageReceived[2];
     instantiationOrder[7] = hobgoblin2DamageReceived[2];
     instantiationOrder[8] = warriorDamageReceived[2];
-    
+
     instantiationOrder[9] = hobgoblin1DamageReceived[3];
     instantiationOrder[10] = hobgoblin2DamageReceived[3];
     instantiationOrder[11] = warriorDamageReceived[3];
-    
+
     instantiationOrder[12] = hobgoblin1DamageReceived[4];
     instantiationOrder[13] = hobgoblin2DamageReceived[4];
     instantiationOrder[14] = warriorDamageReceived[4];
-    
+
     instantiationOrder[15] = hobgoblin1DamageReceived[5];
     instantiationOrder[16] = hobgoblin2DamageReceived[5];
     instantiationOrder[17] = warriorDamageReceived[5];
-    
+
     instantiationOrder[18] = hobgoblin1DamageReceived[6];
     instantiationOrder[19] = hobgoblin2DamageReceived[6];
     instantiationOrder[20] = warriorDamageReceived[6];
-    
+
     instantiationOrder[21] = hobgoblin1DamageReceived[7];
     instantiationOrder[22] = hobgoblin2DamageReceived[7];
     instantiationOrder[23] = warriorDamageReceived[7];
-    
+
     instantiationOrder[24] = hobgoblin1DamageReceived[8];
     instantiationOrder[25] = hobgoblin2DamageReceived[8];
     instantiationOrder[26] = warriorDamageReceived[8];
-    
+
     instantiationOrder[27] = hobgoblin1DamageReceived[9];
     instantiationOrder[28] = hobgoblin2DamageReceived[9];
     instantiationOrder[29] = warriorDamageReceived[9];

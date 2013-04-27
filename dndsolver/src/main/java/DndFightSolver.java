@@ -1,20 +1,30 @@
-import scenarios.firstscenario.WarriorVsAnkylosaurusScenarioWithArrays;
-import scenarios.second.WarriorVsTwoHobgoblins;
+import java.util.Date;
+
+import scenarios.third.TwoWarriorVsTwoOrcs;
 
 public class DndFightSolver {
 
   public static void main(String[] args) {
     // Scénario 1
-    WarriorVsAnkylosaurusScenarioWithArrays firstScenario = new WarriorVsAnkylosaurusScenarioWithArrays();
-    System.out.println("Running the first try of scenario 1");
+    // WarriorVsAnkylosaurusScenarioWithArrays firstScenario = new
+    // WarriorVsAnkylosaurusScenarioWithArrays();
+    // System.out.println("Running the first try of scenario 1");
     // firstScenario.solveScenario();
 
     System.out.println("--------------------------");
 
     // Scénario 2
-    WarriorVsTwoHobgoblins secondScenario = new WarriorVsTwoHobgoblins();
-    System.out.println("Running the scenario 2");
-    secondScenario.solveScenario();
-  }
+    // WarriorVsTwoHobgoblins secondScenario = new WarriorVsTwoHobgoblins();
+    // System.out.println("Running the scenario 2");
+    // secondScenario.solveScenario();
 
+    System.out.println("--------------------------");
+
+    // Scénario 3
+    TwoWarriorVsTwoOrcs thirdScenario = new TwoWarriorVsTwoOrcs();
+    System.out.println("Running the scenario 3. Start time = "
+                       + new Date(System.currentTimeMillis()));
+    thirdScenario.solveScenario();
+
+  }
 }

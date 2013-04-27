@@ -82,10 +82,6 @@ public class WarriorVsTwoHobgoblins {
       Constraint isWarriorDead = gt(sum(tempWarriorArrays), WARRIOR_MAX_HP);
       Constraint isHobgoblin1Dead = gt(sum(tempHobgoblin1Arrays), HOBGOBLIN_MAX_HP);
       Constraint isHobgoblin2Dead = gt(sum(tempHobgoblin2Arrays), HOBGOBLIN_MAX_HP);
-      Constraint isHobgoblin1DeadNextRound = gt(sum(tempHobgolbin1ArraysNextRound),
-                                                HOBGOBLIN_MAX_HP);
-      Constraint isHobgoblin2DeadNextRound = gt(sum(tempHobgolbin2ArraysNextRound),
-                                                HOBGOBLIN_MAX_HP);
 
       // dommage reçu par l'hobgoblin 1
       model.addConstraint(ifThenElse(isWarriorDead,

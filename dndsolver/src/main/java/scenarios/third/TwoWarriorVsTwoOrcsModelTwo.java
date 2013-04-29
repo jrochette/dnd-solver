@@ -17,13 +17,17 @@ import choco.kernel.solver.Solver;
  * 
  * Le guerrier à 89 points de vie et fait 46 dmg par attaque
  * 
- * Les hobgoblins ont 30 points de vie chacun et font 20 dmg par attaque
+ * Le rôdeur a 66 points de vie et fait 50 dmg par attaque
  * 
- * Dans le cadre de ce scénario, ce sont les guerriers qui agiront
+ * L'orc a 40 points de vie et fait 22 dmg par attaque
+ * 
+ * Le goblin a 48 points de vie et fait 15 dmg par attaque
+ * 
+ * Dans le cadre de ce scénario, ce sont le guerrier et le rôdeur qui agiront
  * en premier.
  * 
  * Pour garder ce scénario très simple, il n'y aura pas de mouvement
- * de la part des guerriers ni des hobgoblins.
+ * de la part des guerriers ni des monstres.
  * 
  * À des fins d'exploration et de simplicité, ce scénario comportera 
  * seulement 3 rounds et les contraintes et variables ne seront pas 
@@ -103,7 +107,7 @@ public class TwoWarriorVsTwoOrcsModelTwo {
   }
 
   private void prepareRound1Constraints() {
-    // Résultat des attaques de warrior et ranger
+    // Résultat des attaques du guerrier et du rôdeur
     Constraint orcAttackedByWarrior = and(eq(warriorTarget1, 3), neq(rangerTarget1, 3));
     Constraint orcAttackedByRanger = and(neq(warriorTarget1, 3), eq(rangerTarget1, 3));
     Constraint orcAttackedByWarriorAndRanger = and(eq(warriorTarget1, 3), eq(rangerTarget1, 3));
@@ -124,7 +128,7 @@ public class TwoWarriorVsTwoOrcsModelTwo {
                                 eq(goblinHp1, GOBLIN_MAX_HP - WARRIOR_DMG - RANGER_DMG)));
     model.addConstraint(implies(goblinNotAttacked, eq(goblinHp1, GOBLIN_MAX_HP)));
 
-    // Résultat des attaques de orc et goblin
+    // Résultat des attaques de l'orc et du goblin
     Constraint warriorAttackedByOrc = and(eq(orcTarget1, 1), neq(goblinTarget1, 1));
     Constraint warriorAttackedByGoblin = and(neq(orcTarget1, 1), eq(goblinTarget1, 1));
     Constraint warriorAttackedByOrcAndGoblin = and(eq(orcTarget1, 1), eq(goblinTarget1, 1));
@@ -147,7 +151,7 @@ public class TwoWarriorVsTwoOrcsModelTwo {
     model.addConstraint(implies(rangerNotAttacked, eq(rangerHp1, RANGER_MAX_HP)));
 
     // Contrainte pour le choix des cibles des attaques
-    // Comme le guerrier et le ranger attaquent avant leur
+    // Comme le guerrier et le rôdeur attaquent avant leur
     // ennemis, la contrainte de vérification de vie n'est
     // pas nécessaire pour le round 1
     Constraint orcDead = lt(orcHp1, 0);
@@ -157,16 +161,12 @@ public class TwoWarriorVsTwoOrcsModelTwo {
     model.addConstraint(ifThenElse(goblinDead, eq(goblinTarget1, 0), neq(goblinTarget1, 0)));
 
     model.addConstraint(neq(warriorTarget1, 0));
-    // model.addConstraint(implies(goblinDead, neq(warriorTarget1, 4)));
-    // model.addConstraint(implies(orcDead, neq(warriorTarget1, 3)));
 
     model.addConstraint(neq(rangerTarget1, 0));
-    // model.addConstraint(implies(goblinDead, neq(rangerTarget1, 4)));
-    // model.addConstraint(implies(orcDead, neq(rangerTarget1, 3)));
   }
 
   private void prepareRound2Constraints() {
-    // Résultat des attaques de warrior et ranger
+    // Résultat des attaques du guerrieret du rôdeur
     Constraint orcAttackedByWarrior = and(eq(warriorTarget2, 3), neq(rangerTarget2, 3));
     Constraint orcAttackedByRanger = and(neq(warriorTarget2, 3), eq(rangerTarget2, 3));
     Constraint orcAttackedByWarriorAndRanger = and(eq(warriorTarget2, 3), eq(rangerTarget2, 3));
@@ -188,7 +188,7 @@ public class TwoWarriorVsTwoOrcsModelTwo {
                                 eq(goblinHp2, minus(goblinHp1, WARRIOR_DMG + RANGER_DMG))));
     model.addConstraint(implies(goblinNotAttacked, eq(goblinHp2, goblinHp1)));
 
-    // Résultat des attaques de orc et goblin
+    // Résultat des attaques de l'orc et du goblin
     Constraint warriorAttackedByOrc = and(eq(orcTarget2, 1), neq(goblinTarget2, 1));
     Constraint warriorAttackedByGoblin = and(neq(orcTarget2, 1), eq(goblinTarget2, 1));
     Constraint warriorAttackedByOrcAndGoblin = and(eq(orcTarget2, 1), eq(goblinTarget2, 1));
@@ -226,17 +226,13 @@ public class TwoWarriorVsTwoOrcsModelTwo {
 
     model.addConstraint(ifThenElse(warriorDead, eq(warriorTarget2, 0), neq(warriorTarget2, 0)));
     model.addConstraint(implies(warriorDead, eq(warriorTarget2, 0)));
-    // model.addConstraint(implies(goblinDead, neq(warriorTarget2, 4)));
-    // model.addConstraint(implies(orcDead, neq(warriorTarget2, 3)));
 
     model.addConstraint(ifThenElse(rangerDead, eq(rangerTarget2, 0), neq(rangerTarget2, 0)));
     model.addConstraint(implies(rangerDead, eq(rangerTarget2, 0)));
-    // model.addConstraint(implies(goblinDead, neq(rangerTarget2, 4)));
-    // model.addConstraint(implies(orcDead, neq(rangerTarget2, 3)));
   }
 
   private void prepareRound3Constraints() {
-    // Résultat des attaques de warrior et ranger
+    // Résultat des attaques du guerrier et du rôdeur
     Constraint orcAttackedByWarrior = and(eq(warriorTarget3, 3), neq(rangerTarget3, 3));
     Constraint orcAttackedByRanger = and(neq(warriorTarget3, 3), eq(rangerTarget3, 3));
     Constraint orcAttackedByWarriorAndRanger = and(eq(warriorTarget3, 3), eq(rangerTarget3, 3));
@@ -258,7 +254,7 @@ public class TwoWarriorVsTwoOrcsModelTwo {
                                 eq(goblinHp3, minus(goblinHp2, WARRIOR_DMG + RANGER_DMG))));
     model.addConstraint(implies(goblinNotAttacked, eq(goblinHp3, goblinHp2)));
 
-    // Résultat des attaques de orc et goblin
+    // Résultat des attaques de l'orc et du goblin
     Constraint warriorAttackedByOrc = and(eq(orcTarget3, 1), neq(goblinTarget3, 1));
     Constraint warriorAttackedByGoblin = and(neq(orcTarget3, 1), eq(goblinTarget3, 1));
     Constraint warriorAttackedByOrcAndGoblin = and(eq(orcTarget3, 1), eq(goblinTarget3, 1));
@@ -296,13 +292,9 @@ public class TwoWarriorVsTwoOrcsModelTwo {
 
     model.addConstraint(ifThenElse(warriorDead, eq(warriorTarget3, 0), neq(warriorTarget3, 0)));
     model.addConstraint(implies(warriorDead, eq(warriorTarget3, 0)));
-    // model.addConstraint(implies(goblinDead, neq(warriorTarget3, 4)));
-    // model.addConstraint(implies(orcDead, neq(warriorTarget3, 3)));
 
     model.addConstraint(ifThenElse(rangerDead, eq(rangerTarget3, 0), neq(rangerTarget3, 0)));
     model.addConstraint(implies(rangerDead, eq(rangerTarget3, 0)));
-    // model.addConstraint(implies(goblinDead, neq(rangerTarget3, 4)));
-    // model.addConstraint(implies(orcDead, neq(rangerTarget3, 3)));
   }
 
   public void solveScenario() {

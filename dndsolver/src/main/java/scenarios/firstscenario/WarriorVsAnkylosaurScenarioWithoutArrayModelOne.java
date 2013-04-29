@@ -105,7 +105,7 @@ public class WarriorVsAnkylosaurScenarioWithoutArrayModelOne {
     model.addConstraint(gt(warriorHp, 0));// le guerrier doit survivre
     model.addConstraint(eq(warriorHp,
                            minus(WARRIOR_MAX_HP, sum(warriorDmg1, warriorDmg2, warriorDmg3))));
-    // Variable représentant la vie du guerrier
+    // Variable représentant la vie de l'ankylosaur
     ankylosaurusHp = makeIntVar("ankylosaurus HP", -63, ANKYLOSAURUS_MAX_HP);
     model.addVariable(ankylosaurusHp);
     model.addConstraint(eq(ankylosaurusHp,

@@ -20,7 +20,7 @@ import choco.kernel.solver.Solver;
  * 
  * Le guerrier à 89 points de vie et fait 46 dmg par attaque
  * 
- * Les hobgoblins ont 48 points de vie chacun et font 12 dmg par attaque
+ * Les hobgoblins ont 48 points de vie chacun et font 12 et 15 dmg par attaque
  * 
  * Dans le cadre de ce scénario, c'est le guerrier qui agira
  * en premier.

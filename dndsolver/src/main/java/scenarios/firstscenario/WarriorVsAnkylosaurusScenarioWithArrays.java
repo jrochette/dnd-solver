@@ -65,22 +65,22 @@ public class WarriorVsAnkylosaurusScenarioWithArrays {
       IntegerVariable[] tempAnkylosaureArrays = Arrays.copyOf(ankylosaurusDamageReceived, i);
       IntegerVariable[] tempAnkylosaureArrays2 = Arrays.copyOf(ankylosaurusDamageReceived, i + 1);
 
-      Constraint warriorAlive = gt(sum(tempWarriorArrays), WARRIOR_MAX_HP);
-      Constraint aknylosaureAlive = gt(sum(tempAnkylosaureArrays), ANKYLOSAURUS_MAX_HP);
-      Constraint ankylosaureAliveAfterWarriorAttacked = gt(sum(tempAnkylosaureArrays2),
+      Constraint warriorDead = gt(sum(tempWarriorArrays), WARRIOR_MAX_HP);
+      Constraint aknylosaureDead = gt(sum(tempAnkylosaureArrays), ANKYLOSAURUS_MAX_HP);
+      Constraint ankylosaureDeadAfterWarriorAttacked = gt(sum(tempAnkylosaureArrays2),
                                                            ANKYLOSAURUS_MAX_HP);
 
-      // dommage reçu par l'ankylosaure
-      model.addConstraint(ifThenElse(warriorAlive,
+      // dommage reçu par l'ankylosaur
+      model.addConstraint(ifThenElse(warriorDead,
                                      eq(ankylosaurusDamageReceived[i], 0),
-                                     ifThenElse(aknylosaureAlive,
+                                     ifThenElse(aknylosaureDead,
                                                 eq(ankylosaurusDamageReceived[i], 0),
                                                 eq(ankylosaurusDamageReceived[i], 46))));
 
       // dommage reçu par le guerrier
-      model.addConstraint(ifThenElse(aknylosaureAlive,
+      model.addConstraint(ifThenElse(aknylosaureDead,
                                      eq(warriorDamageReceived[i], 0),
-                                     ifThenElse(ankylosaureAliveAfterWarriorAttacked,
+                                     ifThenElse(ankylosaureDeadAfterWarriorAttacked,
                                                 eq(warriorDamageReceived[i], 0),
                                                 eq(warriorDamageReceived[i], 25))));
     }
@@ -89,7 +89,7 @@ public class WarriorVsAnkylosaurusScenarioWithArrays {
     warriorHp = makeIntVar("warrior HP", -50, WARRIOR_MAX_HP);
     model.addVariable(warriorHp);
     model.addConstraint(eq(warriorHp, minus(WARRIOR_MAX_HP, sum(warriorDamageReceived))));
-    // Variable représentant la vie d
+    // Variable représentant la vie de l'ankylosaur
     ankylosaurusHp = makeIntVar("ankylosaurus HP", -6300, ANKYLOSAURUS_MAX_HP);
     model.addVariable(ankylosaurusHp);
     model.addConstraint(eq(ankylosaurusHp,
@@ -98,7 +98,7 @@ public class WarriorVsAnkylosaurusScenarioWithArrays {
 
   public void solveScenario() {
     solveur = new CPSolver();
-    // Lecture du modele par le solveur
+    // Lecture du modèle par le solveur
     solveur.read(model);
     solveur.setVarIntSelector(new StaticVarOrder(solveur, solveur.getVar(prepareHeuristic())));
     if (solveur.solve()) {

@@ -11,6 +11,22 @@ import choco.kernel.model.variables.integer.IntegerVariable;
 import choco.kernel.solver.Solver;
 
 public class WarriorVsTwoHobgoblinModelTwo {
+	/*
+	 * Ce scénario représente un combat entre un guerrier (niveau 10)
+	 * et deux ennemis (hobgloblins) tiré du bestiaire du jeu de rôle
+	 * pathfinder (un version de donjons et dragons)
+	 * 
+	 * Le guerrier à 89 points de vie et fait 46 dmg par attaque
+	 * 
+	 * Les hobgoblins ont 48 points de vie chacun et font 12 et 15 points de dégâts par attaque
+	 * 
+	 * Dans le cadre de ce scénario, c'est le guerrier qui agira
+	 * en premier.
+	 * 
+	 * Pour garder ce scénario très simple, il n'y aura pas de mouvement
+	 * de la part du guerrier ni des hobgoblins.
+	 * 
+	 */
   private static final int NB_OF_ROUNDS = 5;
 
   private static final int WARRIOR_MAX_HP = 89;
@@ -117,8 +133,6 @@ public class WarriorVsTwoHobgoblinModelTwo {
     model.addConstraint(ifThenElse(goblinDead, eq(goblinTarget1, 0), neq(goblinTarget1, 0)));
 
     model.addConstraint(neq(warriorTarget1, 0));
-    // model.addConstraint(implies(goblinDead, neq(warriorTarget1, 4)));
-    // model.addConstraint(implies(orcDead, neq(warriorTarget1, 3)));
   }
 
   private void prepareRound2Constraints() {

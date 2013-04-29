@@ -18,7 +18,7 @@ import choco.kernel.solver.Solver;
  * et deux ennemis (hobgloblins) tiré du bestiaire du jeu de rôle
  * pathfinder (un version de donjons et dragons)
  * 
- * Le guerrier à 89 points de vie et fait 46 dmg par attaque
+ * Les guerriers à 89 points de vie chacun et font 46 dmg par attaque
  * 
  * Les hobgoblins ont 48 points de vie chacun et font 12 dmg par attaque
  * 
@@ -231,9 +231,7 @@ public class TwoWarriorsVsTwoHobgoblins {
 																	1))),
 											eq(warrior2DamageReceived[i], 13),
 											eq(warrior2DamageReceived[i], 0))))));
-
 		}
-
 		
 		// Variable représentant la vie du guerrier 1
 		warrior1Hp = makeIntVar("warrior 1 HP", -5000, WARRIOR_MAX_HP,
@@ -249,7 +247,6 @@ public class TwoWarriorsVsTwoHobgoblins {
 		model.addConstraint(eq(warrior2Hp,
 				minus(WARRIOR_MAX_HP, sum(warrior2DamageReceived))));
 
-		
 		model.addConstraint(or(gt(warrior1Hp, 0), gt(warrior1Hp, 0)));
 		
 		

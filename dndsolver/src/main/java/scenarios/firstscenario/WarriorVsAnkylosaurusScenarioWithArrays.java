@@ -65,21 +65,22 @@ public class WarriorVsAnkylosaurusScenarioWithArrays {
       IntegerVariable[] tempAnkylosaureArrays = Arrays.copyOf(ankylosaurusDamageReceived, i);
       IntegerVariable[] tempAnkylosaureArrays2 = Arrays.copyOf(ankylosaurusDamageReceived, i + 1);
 
-      Constraint gtWarrior = gt(sum(tempWarriorArrays), WARRIOR_MAX_HP);
-      Constraint gtAnkylosaure = gt(sum(tempAnkylosaureArrays), ANKYLOSAURUS_MAX_HP);
-      Constraint gtAnkylosaureForNextRound = gt(sum(tempAnkylosaureArrays2), ANKYLOSAURUS_MAX_HP);
+      Constraint warriorAlive = gt(sum(tempWarriorArrays), WARRIOR_MAX_HP);
+      Constraint aknylosaureAlive = gt(sum(tempAnkylosaureArrays), ANKYLOSAURUS_MAX_HP);
+      Constraint ankylosaureAliveAfterWarriorAttacked = gt(sum(tempAnkylosaureArrays2),
+                                                           ANKYLOSAURUS_MAX_HP);
 
       // dommage reçu par l'ankylosaure
-      model.addConstraint(ifThenElse(gtWarrior,
+      model.addConstraint(ifThenElse(warriorAlive,
                                      eq(ankylosaurusDamageReceived[i], 0),
-                                     ifThenElse(gtAnkylosaure,
+                                     ifThenElse(aknylosaureAlive,
                                                 eq(ankylosaurusDamageReceived[i], 0),
                                                 eq(ankylosaurusDamageReceived[i], 46))));
 
       // dommage reçu par le guerrier
-      model.addConstraint(ifThenElse(gtAnkylosaure,
+      model.addConstraint(ifThenElse(aknylosaureAlive,
                                      eq(warriorDamageReceived[i], 0),
-                                     ifThenElse(gtAnkylosaureForNextRound,
+                                     ifThenElse(ankylosaureAliveAfterWarriorAttacked,
                                                 eq(warriorDamageReceived[i], 0),
                                                 eq(warriorDamageReceived[i], 25))));
     }

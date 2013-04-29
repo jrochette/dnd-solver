@@ -27,7 +27,7 @@ import choco.kernel.solver.variables.integer.IntDomainVar;
  * de la part du guerrier ni de l'ankylosaure.
  *
  */
-public class WarriorVsAnkylosaurScenarioWithoutArray {
+public class WarriorVsAnkylosaurScenarioWithoutArrayModelOne {
   private static final int NB_OF_ROUNDS = 3;
   private static final int[] WARRIOR_DMG = { 0, 46 };
   private static final int[] ANKYLOSAURUS_DMG = { 0, 25 };
@@ -49,7 +49,7 @@ public class WarriorVsAnkylosaurScenarioWithoutArray {
   private Model model;
   private Solver solveur;
 
-  public WarriorVsAnkylosaurScenarioWithoutArray() {
+  public WarriorVsAnkylosaurScenarioWithoutArrayModelOne() {
     // Création du model et du solveur
     model = new CPModel();
 

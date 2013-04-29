@@ -96,10 +96,10 @@ public class WarriorVsAnkylosaurModelTwo {
 
     // Résultat des attaques de warrior
     Constraint ankylosaurAttackedByWarrior = eq(warriorTarget1, 1);
-    Constraint orcNotAttacked = eq(warriorTarget1, 0);
+    Constraint ankylosaurNotAttacked = eq(warriorTarget1, 0);
     model.addConstraint(implies(ankylosaurAttackedByWarrior,
                                 eq(ankylosaurHp1, ANKYLOSAUR_MAX_HP - WARRIOR_DMG)));
-    model.addConstraint(implies(orcNotAttacked, eq(ankylosaurHp1, ANKYLOSAUR_MAX_HP)));
+    model.addConstraint(implies(ankylosaurNotAttacked, eq(ankylosaurHp1, ANKYLOSAUR_MAX_HP)));
 
     // Résultat des attaques de l'ankylosaur
     Constraint warriorAttackedByAnkylosaur = eq(ankylosaurTarget1, 2);

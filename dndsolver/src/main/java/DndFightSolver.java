@@ -1,8 +1,9 @@
 import scenarios.TwoWarsTwoHobLoops.TwoWarriorsVsTwoHobgoblins;
 import scenarios.firstscenario.WarriorVsAnkylosaurModelTwo;
 import scenarios.firstscenario.WarriorVsAnkylosaurScenarioWithoutArrayModelOne;
-import scenarios.second.WarriorVsTwoHobgoblins;
-import scenarios.third.TwoWarriorVsTwoOrcs;
+import scenarios.second.WarriorVsTwoHobgoblinModelTwo;
+import scenarios.second.WarriorVsTwoHobgoblinsModelOne;
+import scenarios.third.TwoWarriorVsTwoOrcsModelTwo;
 
 public class DndFightSolver {
 
@@ -11,10 +12,10 @@ public class DndFightSolver {
     runScenario1();
 
     // Scénario 2
-    // runScenario2();
+    runScenario2();
 
     // Scénario 3
-    // runScenario3();
+    runScenario3();
 
     // Scénario 4
     // runScenario4();
@@ -39,17 +40,25 @@ public class DndFightSolver {
   }
 
   private static void runScenario2() {
-    WarriorVsTwoHobgoblins secondScenario = new WarriorVsTwoHobgoblins();
-    System.out.println("RUNNING SCENARIO 2");
+    WarriorVsTwoHobgoblinsModelOne secondScenarioModel1 = new WarriorVsTwoHobgoblinsModelOne();
+    WarriorVsTwoHobgoblinModelTwo secondScenarioModel2 = new WarriorVsTwoHobgoblinModelTwo();
+    System.out.println("RUNNING SCENARIO 2, MODEL 1");
     System.out.println("");
-    secondScenario.solveScenario();
+
+    secondScenarioModel1.solveScenario();
+
+    System.out.println("");
+    System.out.println("RUNNING SCENARIO 2, MODEL 2");
+    System.out.println("");
+
+    secondScenarioModel2.solveScenario();
 
     System.out.println("__________________________________________________________________________");
   }
 
   private static void runScenario3() {
-    TwoWarriorVsTwoOrcs thirdScenario = new TwoWarriorVsTwoOrcs();
-    System.out.println("RUNNING THE SCENARIO 3");
+    TwoWarriorVsTwoOrcsModelTwo thirdScenario = new TwoWarriorVsTwoOrcsModelTwo();
+    System.out.println("RUNNING THE SCENARIO 3, MODEL 2");
     System.out.println("");
     thirdScenario.solveScenario();
 

@@ -29,8 +29,8 @@ import choco.kernel.solver.Solver;
  * de la part du guerrier ni des hobgoblins.
  * 
  */
-public class WarriorVsTwoHobgoblins {
-  private static final int NB_OF_ROUNDS = 10;
+public class WarriorVsTwoHobgoblinsModelOne {
+  private static final int NB_OF_ROUNDS = 5;
   private static final int[] WARRIOR_DMG = { 0, 46 };
   private static final int[] HOBGOBLIN_DMG = { 0, 12, 15, 27 };
   private static final int WARRIOR_MAX_HP = 89;
@@ -45,7 +45,7 @@ public class WarriorVsTwoHobgoblins {
   private IntegerVariable hobgoblin1Hp;
   private IntegerVariable hobgoblin2Hp;
 
-  public WarriorVsTwoHobgoblins() {
+  public WarriorVsTwoHobgoblinsModelOne() {
     model = new CPModel();
 
     // Tableau de variable représentant les dommages reçus par le guerrier
@@ -159,7 +159,7 @@ public class WarriorVsTwoHobgoblins {
   }
 
   private IntegerVariable[] prepareHeuristic() {
-    IntegerVariable[] instantiationOrder = new IntegerVariable[30];
+    IntegerVariable[] instantiationOrder = new IntegerVariable[15];
     instantiationOrder[0] = hobgoblin1DamageReceived[0];
     instantiationOrder[1] = hobgoblin2DamageReceived[0];
     instantiationOrder[2] = warriorDamageReceived[0];
@@ -180,25 +180,25 @@ public class WarriorVsTwoHobgoblins {
     instantiationOrder[13] = hobgoblin2DamageReceived[4];
     instantiationOrder[14] = warriorDamageReceived[4];
 
-    instantiationOrder[15] = hobgoblin1DamageReceived[5];
-    instantiationOrder[16] = hobgoblin2DamageReceived[5];
-    instantiationOrder[17] = warriorDamageReceived[5];
-
-    instantiationOrder[18] = hobgoblin1DamageReceived[6];
-    instantiationOrder[19] = hobgoblin2DamageReceived[6];
-    instantiationOrder[20] = warriorDamageReceived[6];
-
-    instantiationOrder[21] = hobgoblin1DamageReceived[7];
-    instantiationOrder[22] = hobgoblin2DamageReceived[7];
-    instantiationOrder[23] = warriorDamageReceived[7];
-
-    instantiationOrder[24] = hobgoblin1DamageReceived[8];
-    instantiationOrder[25] = hobgoblin2DamageReceived[8];
-    instantiationOrder[26] = warriorDamageReceived[8];
-
-    instantiationOrder[27] = hobgoblin1DamageReceived[9];
-    instantiationOrder[28] = hobgoblin2DamageReceived[9];
-    instantiationOrder[29] = warriorDamageReceived[9];
+    // instantiationOrder[15] = hobgoblin1DamageReceived[5];
+    // instantiationOrder[16] = hobgoblin2DamageReceived[5];
+    // instantiationOrder[17] = warriorDamageReceived[5];
+    //
+    // instantiationOrder[18] = hobgoblin1DamageReceived[6];
+    // instantiationOrder[19] = hobgoblin2DamageReceived[6];
+    // instantiationOrder[20] = warriorDamageReceived[6];
+    //
+    // instantiationOrder[21] = hobgoblin1DamageReceived[7];
+    // instantiationOrder[22] = hobgoblin2DamageReceived[7];
+    // instantiationOrder[23] = warriorDamageReceived[7];
+    //
+    // instantiationOrder[24] = hobgoblin1DamageReceived[8];
+    // instantiationOrder[25] = hobgoblin2DamageReceived[8];
+    // instantiationOrder[26] = warriorDamageReceived[8];
+    //
+    // instantiationOrder[27] = hobgoblin1DamageReceived[9];
+    // instantiationOrder[28] = hobgoblin2DamageReceived[9];
+    // instantiationOrder[29] = warriorDamageReceived[9];
     return instantiationOrder;
 
   }

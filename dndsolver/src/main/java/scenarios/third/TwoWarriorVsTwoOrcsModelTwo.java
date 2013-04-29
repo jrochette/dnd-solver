@@ -29,7 +29,7 @@ import choco.kernel.solver.Solver;
  * seulement 3 rounds et les contraintes et variables ne seront pas 
  * instanciées à l'aide de boucle.
  */
-public class TwoWarriorVsTwoOrcs {
+public class TwoWarriorVsTwoOrcsModelTwo {
   private static final int NB_OF_ROUNDS = 3;
 
   private static final int WARRIOR_MAX_HP = 89;
@@ -85,7 +85,7 @@ public class TwoWarriorVsTwoOrcs {
 
   private IntegerVariable finalPartyHp;
 
-  public TwoWarriorVsTwoOrcs() {
+  public TwoWarriorVsTwoOrcsModelTwo() {
     model = new CPModel();
 
     prepareVariables();
